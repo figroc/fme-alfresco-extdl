@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<model name="gn:DatalistModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+  <description>Customized Data List for Gionee ZNSJ</description>
+  <author>Figroc Chen</author>
+  <version>1.0</version>
+
+  <imports>
+    <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+    <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+    <import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl"/>
+    <import uri="http://www.alfresco.org/model/forum/1.0" prefix="fm"/>
+    <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys"/>
+  </imports>
+
+  <namespaces>
+    <namespace uri="alm.ss.gionee.com" prefix="gn"/>
+  </namespaces>
+
+  <constraints>
+    <constraint name="gn:dev_status" type="LIST">
+      <parameter name="allowedValues">
+        <list>
+          <value>Not Started</value>
+          <value>In Progress</value>
+          <value>Complete</value>
+          <value>On Hold</value>
+        </list>
+      </parameter>
+    </constraint>
+    <constraint name="gn:test_status" type="LIST">
+      <parameter name="allowedValues">
+        <list>
+          <value>Not Started</value>
+          <value>In Progress</value>
+          <value>Pass</value>
+          <value>Failed</value>
+          <value>On Hold</value>
+        </list>
+      </parameter>
+    </constraint>
+  </constraints>
+
+  <types>
+    <type name="gn:appModList">
+      <title>App Module List</title>
+      <description>Product Line, App Name, App Version, Project Version, Develop Status, Developer, Test Status, Tester</description>
+      <parent>dl:dataListItem</parent>
+      <properties>
+        <property name="gn:prodLine">
+          <title>Product Line</title>
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="gn:appName">
+          <title>App Name</title>
+          <type>d:text</type>
+          <mandatory>true</mandatory>
+        </property>
+        <property name="gn:appVer">
+          <title>App Version</title>
+          <type>d:text</type>
+        </property>
+        <property name="gn:projVer">
+          <title>Project Version</title>
+          <type>d:text</type>
+        </property>
+        <property name="gn:devStatus">
+          <title>Develop Status</title>
+          <type>d:text</type>
+          <constraints>
+            <constraint ref="gn:dev_status" />
+          </constraints>
+        </property>
+        <property name="gn:testStatus">
+          <title>Test Status</title>
+          <type>d:text</type>
+          <constraints>
+            <constraint ref="gn:test_status" />
+          </constraints>
+        </property>
+      </properties>
+      <associations>
+        <association name="gn:developer">
+          <title>Developers</title>
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:person</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+        <association name="gn:tester">
+          <title>Testers</title>
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:person</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+    </type>
+  </types>
+</model>

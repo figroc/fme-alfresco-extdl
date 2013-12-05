@@ -172,13 +172,18 @@ public class DataListItemPolicies implements OnCreateVersionPolicy, OnCreateAsso
         }
     }
     
+    private String generateAssigneeFullNames(NodeRef personRef) {
+        String firstName = (String) nodeService.getProperty(personRef, ContentModel.PROP_FIRSTNAME);
+        String lastName = (String) nodeService.getProperty(personRef, ContentModel.PROP_LASTNAME);
+        String userName = (String) nodeService.getProperty(personRef, ContentModel.PROP_USERNAME);
+        return (firstName == null ? "": firstName) + (lastName == null ? "": lastName) + "(" + userName + ")";
+    }
+    
     @SuppressWarnings("unchecked")
     private void addAssigneeFullNames(AssociationRef nodeAssocRef) {
         NodeRef nodeRef = nodeAssocRef.getSourceRef();
         NodeRef personRef = nodeAssocRef.getTargetRef();
-        String firstName = (String) nodeService.getProperty(personRef, ContentModel.PROP_FIRSTNAME);
-        String lastName = (String) nodeService.getProperty(personRef, ContentModel.PROP_LASTNAME);
-        String fullName = (firstName == null ? "": firstName) + (lastName == null ? "": lastName);
+        String fullName = generateAssigneeFullNames(personRef);
         Map<QName, Serializable> fullNames = new HashMap<QName, Serializable>();
         Collection<String> allNames = new HashSet<String>();
         if (!nodeService.hasAspect(nodeRef, ASPECT_ASSIGNEE_HELPER)){
@@ -197,9 +202,7 @@ public class DataListItemPolicies implements OnCreateVersionPolicy, OnCreateAsso
     private void deleteAssigneeFullNames(AssociationRef nodeAssocRef) {
         NodeRef nodeRef = nodeAssocRef.getSourceRef();
         NodeRef personRef = nodeAssocRef.getTargetRef();
-        String firstName = (String) nodeService.getProperty(personRef, ContentModel.PROP_FIRSTNAME);
-        String lastName = (String) nodeService.getProperty(personRef, ContentModel.PROP_LASTNAME);
-        String fullName = (firstName == null ? "": firstName) +" "+ (lastName == null ? "": lastName);
+        String fullName = generateAssigneeFullNames(personRef);
         Collection<String> allNames = new HashSet<String>();
         if (nodeService.hasAspect(nodeRef, ASPECT_ASSIGNEE_HELPER)){
             allNames = (Collection<String>) nodeService.getProperty(nodeRef, PROP_ASSIGNEE_FULLNAME);

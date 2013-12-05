@@ -19,7 +19,7 @@
       </div>
    <#else>
       <label for="${fieldHtmlId}">${field.label?html}:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if></label>
-      <textarea id="${fieldHtmlId}" name="${field.name}" rows="${rows}" cols="${columns}" tabindex="0"
+      <textarea id="${fieldHtmlId}" name="${field.name}" rows="${rows!5}" cols="${columns!25}" tabindex="0"
                 <#if field.description??>title="${field.description}"</#if>
                 <#if field.control.params.styleClass??>class="${field.control.params.styleClass}"</#if>
                 <#if field.control.params.style??>style="${field.control.params.style}"</#if>
@@ -65,7 +65,7 @@
 <#-- commented out due to ALF-16153 -->
 		   
 		    <#--if form.mode == "edit">
-		   		<textarea id="${fieldHtmlId}" name="${field.name}" rows="${rows}" columns="${columns}" tabindex="0"
+		   		<textarea id="${fieldHtmlId}" name="${field.name}" rows="${rows!5}" columns="${columns!25}" tabindex="0"
                 <#if field.description??>title="${field.description}"</#if>
                 <#if field.control.params.styleClass??>class="${field.control.params.styleClass}"</#if>
                 <#if field.control.params.style??>style="${field.control.params.style}"</#if>

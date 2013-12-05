@@ -42,14 +42,14 @@
              </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
             <appearance>
-                <field id="cm:title">
+               <field id="cm:title">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   	<control-param name="style">width:750px</control-param>
                   </control>
                </field>
                <field id="cm:description">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                  	<control-param name="rows">20</control-param>
+                  	<control-param name="rows">5</control-param>
                   	<control-param name="style">width:750px</control-param>
                   </control>
                </field> 
@@ -71,66 +71,55 @@
          <form id="filter">
             <field-visibility>
                <!-- cm:titled aspect -->
-               <show id="cm:title" />
                <show id="dl:itemId" />
-               <show id="cm:description" />
-               <!-- dl:simpletask type -->
+               <show id="cm:title" />
+               <hide id="cm:description" />
                <show id="cm:creator" />
-               <show id="dl:simpletaskPriority" />
-               <hide id="dl:simpletaskComments"/>
-               <show id="dl:simpletaskStatus" />
+               <hide id="cm:created" />
+               <!-- dl:simpletask type -->
                <show id="dl:simpletaskDueDate" />
-               <show id="cm:created" />
+               <show id="dl:simpletaskPriority" />
+               <show id="dl:simpletaskStatus" />
+               <hide id="dl:simpletaskComments"/>
             </field-visibility>
             <appearance>
-               <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <field id="cm:title" set="normal">
+               <set id="row1" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row2" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <field id="dl:itemId" set="row1" label-id="form.label.itemid">
+	                <control template="/org/alfresco/components/form/controls/textfield.ftl" >
+                  	<control-param name="style">width:250px</control-param>
+                  </control>
+               </field>
+               <field id="cm:title" set="row1">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   	<control-param name="style">width:250px</control-param>
                   </control>
                </field>
-               <field id="dl:itemId" set="normal" label-id="form.label.itemid">
-	               <control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  	<control-param name="style">width:250px</control-param>
-                  </control>
+               <field id="cm:creator" set="row1" mandatory="false">
+               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
                </field>
-               <field id="cm:description" set="normal">
-                  <control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  	<control-param name="style">width:250px</control-param>
-                  </control>
-               </field> 
-               <field id="dl:simpletaskDueDate" set="normal">
+               <field id="dl:simpletaskDueDate" set="row2">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="style">width:250px</control-param>
                		</control>
                </field>
-               <field id="dl:simpletaskPriority" set="normal" >
+               <field id="dl:simpletaskPriority" set="row2" >
 	               	<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
 	             		<control-param name="style">width:250px</control-param>
-						<control-param name="defaultValues">High,Low,Normal</control-param>
-						<control-param name="size">4</control-param>
-					</control>	
+				<control-param name="defaultValues">High,Low,Normal</control-param>
+				<control-param name="size">4</control-param>
+			</control>	
                </field>
-               <field id="dl:simpletaskStatus" set="normal">
+               <field id="dl:simpletaskStatus" set="row2">
                		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
 	             		<control-param name="style">width:250px</control-param>
 	             		<control-param name="defaultValues">Not Started,In Progress,Complete,On Hold</control-param>
 	             		<control-param name="size">4</control-param>
 	             	</control>
                </field>
-               <field id="cm:creator" set="normal" mandatory="false">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               	</field>
-               <field id="cm:created" set="normal" mandatory="false">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               </field>
-               
             </appearance>
          </form>
       </forms>
@@ -149,8 +138,8 @@
                <!-- dl:simpletask type -->
                <show id="dl:simpletaskDueDate" />
                <show id="dl:simpletaskPriority" />
-               <hide id="dl:simpletaskComments"/>
                <show id="dl:simpletaskStatus" />
+               <hide id="dl:simpletaskComments"/>
                <show id="cm:creator" />
                <show id="cm:created" />
                <show id="fm:discussable"/>
@@ -161,6 +150,7 @@
             <appearance>
                <set id="normal" appearance=""/>
                <set id="other" appearance=""/>	
+
                <field id="cm:title" set="normal">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   	<control-param name="style">width:450px</control-param>
@@ -171,23 +161,23 @@
                </field>
                <field id="cm:description" set="normal">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                  	<control-param name="rows">20</control-param>
+                  	<control-param name="rows">5</control-param>
                   	<control-param name="style">width:450px</control-param>
                   </control>
                </field> 
                <field id="dl:simpletaskDueDate" set="normal"/>
                <field id="dl:simpletaskPriority" set="normal" />
                <field id="dl:simpletaskStatus" set="normal"/>
-               <field id="cm:creator" set="normal">
+               <field id="cm:creator" set="other">
                		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
-               	</field>
-               <field id="cm:created" set="normal" read-only="true"/>
+               </field>
+               <field id="cm:created" set="other" read-only="true"/>
                <field id="fm:discussable" label-id="form.label.comments" set="other">
                   <control template="/org/alfresco/components/form/controls/comments.ftl">
                   	<control-param name="editorWidth">450</control-param>
                   </control>
                </field>
-               <field id="cm:versionable" label-id="form.label.version-history" set="normal">
+               <field id="cm:versionable" label-id="form.label.version-history" set="other">
                   <control template="/org/alfresco/components/form/controls/version.ftl" />
                </field>
             </appearance>
@@ -213,45 +203,49 @@
             </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
             <appearance>
-            	<field id="dl:contactFirstName">
+               <set id="normal" appearance=""/>
+               <set id="other" appearance=""/>	
+
+               <field id="dl:contactFirstName" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactLastName">
+               <field id="dl:contactLastName" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactEmail">
+               <field id="dl:contactEmail" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactCompany">
+               <field id="dl:contactCompany" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactJobTitle">
+               <field id="dl:contactJobTitle" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactPhoneOffice">
+               <field id="dl:contactPhoneOffice" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:contactPhoneMobile">
+               <field id="dl:contactPhoneMobile" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>	
-               <field id="dl:contactNotes">
+               <field id="dl:contactNotes" set="other">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl" >
-                  		<control-param name="rows">20</control-param>
-                  		<control-param name="style">width:750px</control-param>
+                  		<control-param name="rows">5</control-param>
+                  		<control-param name="columns">36</control-param>
+                  		<control-param name="style">width:450px</control-param>
                   </control>
                </field>
             </appearance>
@@ -281,7 +275,7 @@
                <show id="dl:contactPhoneMobile" />
                <show id="dl:contactNotes" />
                <show id="cm:creator" />
-               <show id="cm:created" />
+               <hide id="cm:created" />
             </field-visibility>
             <appearance>
                <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
@@ -331,7 +325,7 @@
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
-               	</field>
+               </field>
                <field id="cm:created" set="normal" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
@@ -406,21 +400,21 @@
                </field>
                <field id="dl:contactNotes"  set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
                
-               <field id="cm:creator" set="normal">
+               <field id="cm:creator" set="other">
                		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
-               	</field>
-               <field id="cm:created" set="normal"/>
+               </field>
+               <field id="cm:created" set="other"/>
                <field id="fm:discussable" label-id="form.label.comments" set="other">
                   <control template="/org/alfresco/components/form/controls/comments.ftl">
                   	<control-param name="editorWidth">450</control-param>
                   </control>
                </field>
-               <field id="cm:versionable" label-id="form.label.version-history" set="normal">
+               <field id="cm:versionable" label-id="form.label.version-history" set="other">
                   <control template="/org/alfresco/components/form/controls/version.ftl" />
                </field>	
             </appearance>
@@ -447,42 +441,42 @@
             </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
             <appearance>
-               <field id="dl:eventAgendaRef" >
+               <set id="normal" appearance=""/>
+               <set id="other" appearance=""/>
+               
+               <field id="dl:eventAgendaRef" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:eventAgendaStartTime" >
+               <field id="dl:eventAgendaStartTime" set="normal">
+               		<control template="/org/alfresco/components/form/controls/date.ftl" />
+               </field>
+               <field id="dl:eventAgendaEndTime" set="normal">
+               		<control template="/org/alfresco/components/form/controls/date.ftl" />
+               </field>
+               <field id="dl:eventAgendaSessionName" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:eventAgendaEndTime" >
+               <field id="dl:eventAgendaPresenter" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:eventAgendaSessionName" >
+               <field id="dl:eventAgendaAudience" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
-               <field id="dl:eventAgendaPresenter" >
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:450px</control-param>
-                  	</control>
-               </field>
-               <field id="dl:eventAgendaAudience" >
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:450px</control-param>
-                  	</control>
-               </field>
-               <field id="dl:eventAgendaNotes">
+               <field id="dl:eventAgendaNotes" set="other">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                  	<control-param name="style">width:750px</control-param>
+                  	<control-param name="columns">36</control-param>
+                  	<control-param name="style">width:450px</control-param>
                   </control>
                </field>
-               <field id="cm:attachments">
+               <field id="cm:attachments" set="other">
                   <control template="/org/alfresco/components/form/controls/attachments.ftl">
                     <control-param name="startLocation">{doclib}</control-param>
                     <control-param name="showTargetLink">true</control-param>
@@ -492,7 +486,7 @@
          </form>
          <form id="datagrid">
             <field-visibility>
-              <show id="dl:eventAgendaRef" />
+               <show id="dl:eventAgendaRef" />
                <show id="dl:eventAgendaStartTime" />
                <show id="dl:eventAgendaEndTime" />
                <show id="dl:eventAgendaSessionName" />
@@ -509,13 +503,13 @@
                <!-- dl:meetingAgenda type -->
                <show id="dl:eventAgendaRef" />
                <show id="dl:eventAgendaSessionName" />
+               <show id="dl:eventAgendaNotes" />
                <show id="dl:eventAgendaPresenter" />
                <show id="dl:eventAgendaAudience" />
-               <show id="dl:eventAgendaNotes" />
                <show id="cm:creator" />
-               <show id="dl:eventAgendaStartTime" />
-               <show id="dl:eventAgendaEndTime" />
-               <show id="cm:created" />
+               <hide id="cm:created" />
+               <hide id="dl:eventAgendaStartTime" />
+               <hide id="dl:eventAgendaEndTime" />
             </field-visibility>
             <appearance>
                <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
@@ -596,7 +590,7 @@
                <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
-             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
+            <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
             <view-form template="../data-lists/forms/dataitem-view.ftl" />
             <appearance>
                <set id="normal" appearance=""/>
@@ -607,14 +601,10 @@
                   	</control>
                </field>
                <field id="dl:eventAgendaStartTime" set="normal">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:450px</control-param>
-                  	</control>
+               		<control template="/org/alfresco/components/form/controls/date.ftl" />
                </field>
                <field id="dl:eventAgendaEndTime" set="normal">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:450px</control-param>
-                  	</control>
+               		<control template="/org/alfresco/components/form/controls/date.ftl" />
                </field>
                <field id="dl:eventAgendaSessionName" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
@@ -643,16 +633,16 @@
                   </control>
                </field>
                
-               <field id="cm:creator" set="normal">
+               <field id="cm:creator" set="other">
                		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
                	</field>
-               <field id="cm:created" set="normal"/>
+               <field id="cm:created" set="other"/>
                <field id="fm:discussable" label-id="form.label.comments" set="other">
                   <control template="/org/alfresco/components/form/controls/comments.ftl">
                   	<control-param name="editorWidth">450</control-param>
                   </control>
                </field>
-               <field id="cm:versionable" label-id="form.label.version-history" set="normal">
+               <field id="cm:versionable" label-id="form.label.version-history" set="other">
                   <control template="/org/alfresco/components/form/controls/version.ftl" />
                </field>	
             </appearance>
@@ -667,7 +657,7 @@
          <form>
             <field-visibility>
                <!-- dl:event type -->
-                <!-- cm:titled aspect -->
+               <!-- cm:titled aspect -->
                <show id="cm:title" />
                <show id="cm:description" />
                <!-- dl:event type -->
@@ -682,7 +672,7 @@
             </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
             <appearance>
-            	<field id="cm:title">
+               <field id="cm:title">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
@@ -690,7 +680,7 @@
                <field id="cm:description">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="dl:eventLocation">
@@ -729,20 +719,19 @@
           <form id="filter">
             <field-visibility>
                <show id="cm:title" />
-               <show id="cm:description" />
+               <hide id="cm:description" />
                <!-- dl:event type -->
                <show id="dl:eventLocation" />
                <show id="dl:eventRegistrations" />
                <!-- dl:event type -->
                <hide id="dl:eventNote" />
-               <show id="cm:creator" />
-                <show id="dl:eventStartDate" />
+               <show id="dl:eventStartDate" />
                <show id="dl:eventEndDate" />
-               <show id="cm:created" />
+               <show id="cm:creator" />
+               <hide id="cm:created" />
             </field-visibility>
             <appearance>
                <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
                
                <field id="cm:title"  set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
@@ -769,25 +758,25 @@
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
+               <field id="dl:eventStartDate"  set="normal">
+               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
+               </field>
+               <field id="dl:eventEndDate"  set="normal">
+               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
+               </field>
                <field id="cm:creator" set="normal" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
                	</field>
-               	<field id="dl:eventStartDate"  set="dates">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               </field>
-               <field id="dl:eventEndDate"  set="dates">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               </field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="cm:created" set="normal" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -806,7 +795,7 @@
             <field-visibility>
                <!-- dl:contact type -->
                <!-- dl:event type -->
-                <!-- cm:titled aspect -->
+               <!-- cm:titled aspect -->
                <show id="cm:title" />
                <show id="cm:description" />
                <!-- dl:event type -->
@@ -818,9 +807,9 @@
                <show id="cm:attachments" />
                <!-- dl:event type -->
                <hide id="dl:eventNote" />
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -837,7 +826,7 @@
                <field id="cm:description" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="dl:eventLocation" set="normal">
@@ -859,15 +848,15 @@
                   </control>
                </field>
                
+               <field id="cm:creator" set="other">
+               		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
+               </field>
+               <field id="cm:created" set="other"/>
                <field id="fm:discussable" label-id="form.label.comments" set="other">
                   <control template="/org/alfresco/components/form/controls/comments.ftl">
                   	<control-param name="editorWidth">450</control-param>
                   </control>
                </field>
-               <field id="cm:creator" set="other">
-               		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
-               	</field>
-               <field id="cm:created" set="other"/>
                <field id="cm:versionable" label-id="form.label.version-history" set="other">
                   <control template="/org/alfresco/components/form/controls/version.ftl" />
                </field>	
@@ -906,7 +895,7 @@
             	<field id="cm:description">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="cm:attachments">
@@ -921,7 +910,7 @@
             <field-visibility>
               <show id="dl:itemId" />
               <!-- show old ID -->
-              <show id="dl:issueID" />
+              <hide id="dl:issueID" />
                <!-- cm:titled aspect -->
                <show id="cm:title" />
                <!-- dl:issue type -->
@@ -942,70 +931,72 @@
             <field-visibility>
                <show id="dl:itemId" />
                <show id="cm:title" />
-               <show id="cm:description" />
-               <show id="dl:assigneeFullName" />
-               <show id="dl:issueStatus" />
-               <show id="dl:issuePriority" />
+               <hide id="cm:description" />
                <hide id="dl:issueComments" />
-               <show id="cm:creator" />
                <show id="dl:issueDueDate" />
-               <show id="cm:created" />
+               <show id="dl:issuePriority" />
+               <show id="dl:issueStatus" />
+               <show id="dl:assigneeFullName" />
+               <show id="cm:creator" />
+               <hide id="cm:created" />
             </field-visibility>
             <appearance>
-               <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <field id="dl:itemId"  set="normal">
+               <set id="row1" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row2" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row3" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               
+               <field id="dl:itemId"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:title"  set="normal">
+               <field id="cm:title"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="normal">
+               <field id="cm:description"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:issueStatus"  set="normal">
+               <field id="dl:issueComments"  set="row1">
+               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
+                  		<control-param name="style">width:250px</control-param>
+                  	</control>
+               </field>
+               <field id="dl:issueDueDate"  set="row2">
+               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
+               </field>
+               <field id="dl:issuePriority"  set="row2">
+               		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
+	             		<control-param name="style">width:250px</control-param>
+				<control-param name="defaultValues">High,Low,Normal</control-param>
+				<control-param name="size">4</control-param>
+			</control>	
+               </field>
+               <field id="dl:issueStatus"  set="row2">
                		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
 	             		<control-param name="style">width:250px</control-param>
 	             		<control-param name="defaultValues">Not Started,In Progress,Complete,On Hold</control-param>
 	             		<control-param name="size">4</control-param>
 	             	</control>
                </field>
-               <field id="dl:issuePriority"  set="normal">
-               		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
-	             		<control-param name="style">width:250px</control-param>
-						<control-param name="defaultValues">High,Low,Normal</control-param>
-						<control-param name="size">4</control-param>
-					</control>	
-               </field>
-               <field id="cm:description"  set="normal">
+               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="row3">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:issueComments"  set="normal">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:250px</control-param>
-                  	</control>
-               </field>
-               <field id="cm:creator" set="normal" mandatory="false">
+               <field id="cm:creator" set="row3" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
-               	</field>
-               <field id="dl:issueDueDate"  set="dates">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
                </field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="cm:created" set="row3" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -1025,7 +1016,7 @@
                <!-- dl:issue type -->
                <show id="dl:itemId" />
                <!-- old ID -->
-               <show id="dl:issueID" />
+               <hide id="dl:issueID" />
                <!-- cm:titled aspect -->
                <show id="cm:title" />
                <!-- dl:issue type -->
@@ -1040,9 +1031,9 @@
                <!-- cm:attachable aspect -->
                <show id="cm:attachments" />
                <!-- dl:event type -->
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -1067,7 +1058,7 @@
                <field id="cm:description" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="dl:issueDueDate" set="normal"/>
@@ -1156,7 +1147,7 @@
             	<field id="cm:description">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="cm:attachments">
@@ -1189,65 +1180,66 @@
             <field-visibility>
                <show id="cm:title" />
                <show id="cm:description" />
+               <show id="cm:creator" />
+               <hide id="cm:created" />
                <show id="dl:locationAddress1" />
                <show id="dl:locationAddress2" />
                <show id="dl:locationAddress3" />
                <show id="dl:locationZip" />
                <show id="dl:locationState" />
                <show id="dl:locationCountry" />
-               <show id="cm:creator" />
-               <show id="cm:created" />
             </field-visibility>
             <appearance>
-               <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <field id="cm:title"  set="normal">
+               <set id="row1" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row2" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row3" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <field id="cm:title"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:description"  set="normal">
+               <field id="cm:description"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationAddress1"  set="normal">
+               <field id="dl:locationAddress1"  set="row2">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationAddress2"  set="normal">
+               <field id="dl:locationAddress2"  set="row2">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationAddress3"  set="normal">
+               <field id="dl:locationAddress3"  set="row2">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationZip"  set="normal">
+               <field id="dl:locationZip"  set="row3">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationState"  set="normal">
+               <field id="dl:locationState"  set="row3">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:locationCountry"  set="normal">
+               <field id="dl:locationCountry"  set="row3">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:creator" set="normal" mandatory="false">
+               <field id="cm:creator" set="row1" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
                	</field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="cm:created" set="row1" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -1278,9 +1270,9 @@
                <!-- cm:attachable aspect -->
                <show id="cm:attachments" />
                <!-- dl:location type -->
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -1326,7 +1318,7 @@
             	<field id="cm:description" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="cm:attachments" set="normal">
@@ -1386,11 +1378,11 @@
             	<field id="cm:description">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
             	<field id="dl:meetingAgendaTime">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
+               		<control template="/org/alfresco/components/form/controls/date.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
                </field>
@@ -1426,15 +1418,15 @@
             <field-visibility>
                <show id="dl:meetingAgendaRef" />
                <show id="cm:title" />
-               <show id="cm:description" />
-               <show id="dl:meetingAgendaTime" />
+               <hide id="cm:description" />
+               <hide id="dl:meetingAgendaTime" />
                <show id="dl:meetingAgendaOwner" />
-               <show id="cm:creator" />
-               <show id="cm:created" />
+               <hide id="cm:creator" />
+               <hide id="cm:created" />
             </field-visibility>
             <appearance>
                <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               
                <field id="dl:meetingAgendaRef"  set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
@@ -1466,7 +1458,7 @@
                			<control-param name="style">width:250px</control-param>
                		</control>
                	</field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="cm:created" set="normal" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -1494,9 +1486,9 @@
                <!-- cm:attachable aspect -->
                <show id="cm:attachments" />
                <!-- dl:location type -->
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -1517,7 +1509,7 @@
             	<field id="cm:description" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
             	<field id="dl:meetingAgendaTime" set="normal">
@@ -1588,7 +1580,7 @@
             	<field id="cm:description">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="cm:attachments">
@@ -1625,77 +1617,79 @@
             <field-visibility>
                <show id="dl:itemId" />
                <show id="cm:title" />
-               <show id="cm:description" />
+               <hide id="cm:description" />
+               <show id="dl:assigneeFullName" />
+               <show id="cm:creator" />
+               <hide id="cm:created" />
+               <hide id="dl:ganttPercentComplete" />
                <show id="dl:ganttStartDate" />
                <show id="dl:ganttEndDate" />
-               <show id="dl:assigneeFullName" />
                <show id="dl:taskPriority" />
                <show id="dl:taskStatus" />
-               <show id="dl:ganttPercentComplete" />
-               <show id="cm:creator" />
-               <show id="cm:created" />
             </field-visibility>
             <appearance>
-               <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <field id="dl:itemId"  set="normal">
+               <set id="row1" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row2" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row3" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row4" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <field id="dl:itemId"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:title"  set="normal">
+               <field id="cm:title"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:description"  set="normal">
+               <field id="cm:description"  set="row1">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="normal">
+               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="row2">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:taskStatus"  set="normal">
-               		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
-	             		<control-param name="style">width:250px</control-param>
-	             		<control-param name="defaultValues">Not Started,In Progress,Complete,On Hold</control-param>
-	             		<control-param name="size">4</control-param>
-	             	</control>
+               <field id="cm:creator" set="row2" mandatory="false">
+               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
                </field>
-               <field id="dl:taskPriority"  set="normal">
+               <field id="cm:created" set="row2" mandatory="false">
+               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
+               </field>
+               <field id="dl:taskPriority"  set="row3">
                		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
 	             		<control-param name="style">width:250px</control-param>
 						<control-param name="defaultValues">High,Low,Normal</control-param>
 						<control-param name="size">4</control-param>
 					</control>	
                </field>
-               <field id="dl:ganttPercentComplete"  set="normal">
+               <field id="dl:taskStatus"  set="row3">
+               		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
+	             		<control-param name="style">width:250px</control-param>
+	             		<control-param name="defaultValues">Not Started,In Progress,Complete,On Hold</control-param>
+	             		<control-param name="size">4</control-param>
+	             	</control>
+               </field>
+               <field id="dl:ganttPercentComplete"  set="row4">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="cm:creator" set="normal" mandatory="false">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               	</field>
-               	 <field id="dl:ganttStartDate"  set="dates">
+               <field id="dl:ganttStartDate"  set="row4">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
                </field>
-               <field id="dl:ganttEndDate"  set="dates">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
-               </field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="dl:ganttEndDate"  set="row4">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -1729,9 +1723,9 @@
                <hide id="dl:taskComments" />
                <!-- cm:attachable aspect -->
                <show id="cm:attachments" />
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -1739,7 +1733,7 @@
             <appearance>
                <set id="normal" appearance=""/>
                <set id="other" appearance=""/>
-            	<field id="cm:title" set="normal">
+               <field id="cm:title" set="normal">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:450px</control-param>
                   	</control>
@@ -1747,10 +1741,10 @@
                <field id="dl:itemId" set="normal" label-id="form.label.itemid">
 	               <control template="/org/alfresco/components/form/controls/info.ftl" />
                </field>
-            	<field id="cm:description" set="normal">
+               <field id="cm:description" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
             	<field id="dl:ganttStartDate" set="normal"/>
@@ -1808,7 +1802,7 @@
             	<field id="dl:todoNotes">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:750px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="dl:attachments">
@@ -1835,57 +1829,59 @@
          <form id="filter">
             <field-visibility>
                <show id="dl:todoTitle" />
+               <hide id="dl:todoNotes" />
                <show id="dl:todoPriority" />
+               <show id="dl:todoDueDate" />
                <show id="dl:todoStatus" />
-               <show id="dl:todoNotes" />
                <show id="dl:assigneeFullName" />
                <show id="cm:creator" />
-               <show id="dl:todoDueDate" />
-               <show id="cm:created" />
+               <hide id="cm:created" />
             </field-visibility>
             <appearance>
-               <set id="normal" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <set id="dates" template="/org/alfresco/components/form/3-column-set.ftl"/>
-               <field id="dl:todoTitle"  set="normal">
+               <set id="row1" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row2" template="/org/alfresco/components/form/3-column-set.ftl"/>
+               <set id="row3" template="/org/alfresco/components/form/3-column-set.ftl"/>
+
+               <field id="dl:todoTitle" set="row1" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:todoStatus"  set="normal">
+               <field id="dl:todoNotes"  set="row1">
+               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
+                  		<control-param name="style">width:250px</control-param>
+                  	</control>
+               </field>
+               <field id="dl:todoPriority"  set="row1">
+               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
+	             		<control-param name="style">width:250px</control-param>
+			</control>	
+               </field>
+               <field id="dl:todoDueDate"  set="row2">
+               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
+               			<control-param name="forceEditable">true</control-param>
+               			<control-param name="style">width:250px</control-param>
+               		</control>
+               </field>
+               <field id="dl:todoStatus"  set="row2">
                		<control template="/org/alfresco/components/form/controls/filter-selectmany.ftl">
 	             		<control-param name="style">width:250px</control-param>
 	             		<control-param name="defaultValues">Not Started,In Progress,Complete,On Hold</control-param>
 	             		<control-param name="size">4</control-param>
 	             	</control>
                </field>
-               <field id="dl:todoPriority"  set="normal">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl">
-	             		<control-param name="style">width:250px</control-param>
-					</control>	
-               </field>
-               <field id="dl:todoNotes"  set="normal">
+               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="row3">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
                   		<control-param name="style">width:250px</control-param>
                   	</control>
                </field>
-               <field id="dl:assigneeFullName" label-id="form.label.dl_assigneeFullName" set="normal">
-               		<control template="/org/alfresco/components/form/controls/textfield.ftl" >
-                  		<control-param name="style">width:250px</control-param>
-                  	</control>
-               </field>
-               <field id="cm:creator" set="normal" mandatory="false">
+               <field id="cm:creator" set="row3" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/textfield.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
                		</control>
-               	</field>
-               	 <field id="dl:todoDueDate"  set="dates">
-               		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
-               			<control-param name="forceEditable">true</control-param>
-               			<control-param name="style">width:250px</control-param>
-               		</control>
                </field>
-               <field id="cm:created" set="dates" mandatory="false">
+               <field id="cm:created" set="row3" mandatory="false">
                		<control template="/org/alfresco/components/form/controls/filter-daterange.ftl">
                			<control-param name="forceEditable">true</control-param>
                			<control-param name="style">width:250px</control-param>
@@ -1903,16 +1899,16 @@
          <!-- Data List pop-up edit form -->
          <form>
             <field-visibility>
-                <show id="dl:todoTitle" />
+               <show id="dl:todoTitle" />
                <show id="dl:todoDueDate" />
                <show id="dl:todoPriority" />
                <show id="dl:todoStatus" />
                <show id="dl:todoNotes" />
                <show id="dl:assignee" />
                <show id="dl:attachments" />
-               <show id="fm:discussable"/>
                <show id="cm:creator" />
                <show id="cm:created" />
+               <show id="fm:discussable"/>
                <show id="cm:versionable"/>
             </field-visibility>
             <edit-form template="../data-lists/forms/dataitem-edit.ftl" />
@@ -1931,7 +1927,7 @@
                <field id="dl:todoNotes" set="normal">
                		<control template="/org/alfresco/components/form/controls/textarea.ftl" >
                   		<control-param name="style">width:450px</control-param>
-                  		<control-param name="rows">20</control-param>
+                  		<control-param name="rows">5</control-param>
                   	</control>
                </field>
                <field id="dl:assignee" set="normal"/>
