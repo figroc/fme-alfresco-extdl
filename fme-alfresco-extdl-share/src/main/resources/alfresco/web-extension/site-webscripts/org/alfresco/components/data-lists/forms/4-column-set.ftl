@@ -1,9 +1,9 @@
 <#list set.children as item>
    <#if item.kind != "set">
       <#if (item_index % 4) == 0>
-      <div class="yui-g"><div class="yui-g first"><div class="yui-u first">
+      <div class="yui-g"><div class="yui-g first"><div class="yui-u first" style="text-align:left">
       <#elseif (item_index % 4) == 2>
-      <div class="yui-g"><div class="yui-u first">
+      <div class="yui-g"><div class="yui-u first" style="text-align:left">
       <#else>
       <div class="yui-u">
       </#if>

@@ -38,16 +38,19 @@
       <div id="${formId}-fields" class="form-fields columns-form-fields"> 
         <div class="yui-g">
         <#list form.structure as item>
-            <#if item.kind == "set">
-               <#if item_has_next>
-               		<div class="yui-u first" style="text-align:left">
-               <#else>
-               		<div class="yui-u">
-               </#if>
-               <@renderSetWithLabel set=item />
+            <#if item_index == 0>
+               <div class="yui-u first" style="text-align:left">
+            <#elseif !item_has_next>
                </div>
+               <div class="yui-u">
+            </#if>
+            <#if item.kind == "set">
+               <@formLib.renderSet set=item />
             <#else>
                <@formLib.renderField field=form.fields[item.id] />
+            </#if>
+            <#if !item_has_next>
+               </div>
             </#if>
         </#list>
         </div>

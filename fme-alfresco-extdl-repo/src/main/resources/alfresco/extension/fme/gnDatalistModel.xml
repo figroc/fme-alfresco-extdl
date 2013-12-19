@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <model name="gn:DatalistModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
-  <description>Customized Data List for Gionee ZNSJ</description>
+  <description>Customized Data List for Gionee Smart Phone RnD</description>
   <author>Figroc Chen</author>
   <version>1.0</version>
 
@@ -13,7 +13,7 @@
   </imports>
 
   <namespaces>
-    <namespace uri="alm.ss.gionee.com" prefix="gn"/>
+    <namespace uri="http://alm.ss.gionee.com/model/rd/1.0" prefix="gn"/>
   </namespaces>
 
   <constraints>
@@ -41,15 +41,30 @@
   </constraints>
 
   <types>
-    <type name="gn:appModList">
-      <title>App Module List</title>
-      <description>Product Line, App Name, App Version, Project Version, Develop Status, Developer, Test Status, Tester</description>
+    <type name="gn:appTestReport">
+      <title>TD Test Report List</title>
+      <description>AppInfo, TestInfo, Notes</description>
       <parent>dl:dataListItem</parent>
+      <mandatory-aspects>
+        <aspect>gn:app_info</aspect>
+        <aspect>gn:test_info</aspect>
+        <aspect>gn:remark</aspect>
+      </mandatory-aspects>
+    </type>
+  </types>
+
+  <aspects>
+    <aspect name="gn:app_info">
+      <title>AppInfo</title>
       <properties>
-        <property name="gn:prodLine">
-          <title>Product Line</title>
+        <property name="gn:prdName">
+          <title>Product Name</title>
           <type>d:text</type>
           <mandatory>true</mandatory>
+        </property>
+        <property name="gn:prdVer">
+          <title>Product Version</title>
+          <type>d:text</type>
         </property>
         <property name="gn:appName">
           <title>App Name</title>
@@ -60,10 +75,45 @@
           <title>App Version</title>
           <type>d:text</type>
         </property>
-        <property name="gn:projVer">
-          <title>Project Version</title>
+      </properties>
+    </aspect>
+    <aspect name="gn:test_info">
+      <title>TestInfo</title>
+      <properties>
+        <property name="gn:testStatus">
+          <title>Test Status</title>
           <type>d:text</type>
+          <constraints>
+            <constraint ref="gn:test_status" />
+          </constraints>
         </property>
+        <property name="gn:testDate">
+          <title>Test Date</title>
+          <type>d:date</type>
+        </property>
+        <property name="gn:testTime">
+          <title>Test Time (Hours)</title>
+          <type>d:double</type>
+        </property>
+      </properties>
+      <associations>
+        <association name="gn:tester">
+          <title>Testers</title>
+          <source>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </source>
+          <target>
+            <class>cm:person</class>
+            <mandatory>false</mandatory>
+            <many>true</many>
+          </target>
+        </association>
+      </associations>
+    </aspect>
+    <aspect name="gn:dev_info">
+      <title>DevInfo</title>
+      <properties>
         <property name="gn:devStatus">
           <title>Develop Status</title>
           <type>d:text</type>
@@ -71,12 +121,13 @@
             <constraint ref="gn:dev_status" />
           </constraints>
         </property>
-        <property name="gn:testStatus">
-          <title>Test Status</title>
-          <type>d:text</type>
-          <constraints>
-            <constraint ref="gn:test_status" />
-          </constraints>
+        <property name="gn:devDate">
+          <title>Develop Date</title>
+          <type>d:date</type>
+        </property>
+        <property name="gn:devTime">
+          <title>Develop Time (Hours)</title>
+          <type>d:double</type>
         </property>
       </properties>
       <associations>
@@ -92,19 +143,16 @@
             <many>true</many>
           </target>
         </association>
-        <association name="gn:tester">
-          <title>Testers</title>
-          <source>
-            <mandatory>false</mandatory>
-            <many>true</many>
-          </source>
-          <target>
-            <class>cm:person</class>
-            <mandatory>false</mandatory>
-            <many>true</many>
-          </target>
-        </association>
       </associations>
-    </type>
-  </types>
+    </aspect>
+    <aspect name="gn:remark">
+      <title>Remarkable</title>
+      <properties>
+        <property name="gn:notes">
+          <title>Notes</title>
+          <type>d:text</type>
+        </property>
+      </properties>
+    </aspect>
+  </aspects>
 </model>

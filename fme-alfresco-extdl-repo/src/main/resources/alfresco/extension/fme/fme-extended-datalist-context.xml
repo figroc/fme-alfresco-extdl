@@ -39,7 +39,7 @@
              <value>dl:event</value>
              <value>dl:location</value>
              <value>dl:meetingAgenda</value>
-             <value>gn:appModList</value>
+             <value>gn:appTestReport</value>
          </set>
      </property>
   </bean>
@@ -96,8 +96,8 @@
               <entry key="dl:eventAgenda"> 
                 <value>dl:itemId,dl:eventAgendaRef,dl:eventAgendaStartTime,dl:eventAgendaEndTime,dl:eventAgendaSessionName,dl:eventAgendaPresenter,dl:eventAgendaAudience,cm:attachments,dl:eventAgendaNotes,fm:forum</value> 
               </entry> 
-              <entry key="gn:appModList"> 
-                <value>dl:itemId,gn:prodLine,gn:appName,gn:appVer,gn:projVer,gn:devStatus,gn:developer,gn:testStatus,gn:tester,fm:forum</value> 
+              <entry key="gn:appTestReport"> 
+                <value>dl:itemId,gn:prdName,gn:prdVer,gn:appName,gn:appVer,gn:testStatus,gn:testDate,gn:testTime,gn:tester,gn:notes,fm:forum</value> 
               </entry> 
            </map> 
         </property> 
