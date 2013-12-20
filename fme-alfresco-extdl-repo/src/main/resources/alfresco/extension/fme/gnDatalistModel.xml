@@ -88,11 +88,11 @@
           </constraints>
         </property>
         <property name="gn:testDate">
-          <title>Test Date</title>
+          <title>Test Status Date</title>
           <type>d:date</type>
         </property>
         <property name="gn:testTime">
-          <title>Test Time (Hours)</title>
+          <title>Test Time Used (H)</title>
           <type>d:double</type>
         </property>
       </properties>
@@ -122,11 +122,11 @@
           </constraints>
         </property>
         <property name="gn:devDate">
-          <title>Develop Date</title>
+          <title>Develop Status Date</title>
           <type>d:date</type>
         </property>
         <property name="gn:devTime">
-          <title>Develop Time (Hours)</title>
+          <title>Develop Time Used (H)</title>
           <type>d:double</type>
         </property>
       </properties>

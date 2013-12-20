@@ -18,9 +18,11 @@
             </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
             <appearance>
-               <set id="app" appearance="fieldset" label="App Info" template="../data-lists/forms/4-column-set.ftl"/>
+               <set id="app" appearance="fieldset" label-id="form.appearance.set.label.app" label="App Info" 
+                template="../data-lists/forms/4-column-set.ftl"/>
                <set id="notes" appearance=""/>	
-               <set id="test" appearance="fieldset" label="Test Info" template="../data-lists/forms/4-column-set.ftl"/>	
+               <set id="test" appearance="fieldset" label-id="form.appearance.set.label.test" label="Test Info" 
+                template="../data-lists/forms/4-column-set.ftl"/>	
                
                <field id="gn:prdName" set="app">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl" >
@@ -110,9 +112,11 @@
             <view-form template="../data-lists/forms/dataitem-view.ftl" />
             <appearance>
                <set id="title" appearance=""/>
-               <set id="app" appearance="fieldset" label="App Info" template="../data-lists/forms/4-column-set.ftl"/>
+               <set id="app" appearance="fieldset" label-id="form.appearance.set.label.app" label="App Info" 
+                template="../data-lists/forms/4-column-set.ftl"/>
                <set id="notes" appearance=""/>
-               <set id="test" appearance="fieldset" label="Test Info" template="../data-lists/forms/4-column-set.ftl"/>
+               <set id="test" appearance="fieldset" label-id="form.appearance.set.label.test" label="Test Info" 
+                template="../data-lists/forms/4-column-set.ftl"/>
                <set id="other" appearance=""/>	
 
                <field id="dl:itemId" set="title" label-id="form.label.itemid">
