@@ -88,7 +88,7 @@
           </constraints>
         </property>
         <property name="gn:testDate">
-          <title>Test Status Date</title>
+          <title>Test Date</title>
           <type>d:date</type>
         </property>
         <property name="gn:testTime">
@@ -122,7 +122,7 @@
           </constraints>
         </property>
         <property name="gn:devDate">
-          <title>Develop Status Date</title>
+          <title>Develop Date</title>
           <type>d:date</type>
         </property>
         <property name="gn:devTime">
