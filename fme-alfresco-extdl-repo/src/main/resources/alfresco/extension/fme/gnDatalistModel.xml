@@ -95,6 +95,10 @@
           <title>Test Time Used (H)</title>
           <type>d:double</type>
         </property>
+        <property name="gn:testMethod">
+          <title>Test Method</title>
+          <type>d:text</type>
+        </property>
       </properties>
       <associations>
         <association name="gn:tester">
@@ -128,6 +132,10 @@
         <property name="gn:devTime">
           <title>Develop Time Used (H)</title>
           <type>d:double</type>
+        </property>
+        <property name="gn:devMethod">
+          <title>Develop Method</title>
+          <type>d:text</type>
         </property>
       </properties>
       <associations>

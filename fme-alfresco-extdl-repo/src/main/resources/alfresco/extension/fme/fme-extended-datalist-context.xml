@@ -97,7 +97,7 @@
                 <value>dl:itemId,dl:eventAgendaRef,dl:eventAgendaStartTime,dl:eventAgendaEndTime,dl:eventAgendaSessionName,dl:eventAgendaPresenter,dl:eventAgendaAudience,cm:attachments,dl:eventAgendaNotes,fm:forum</value> 
               </entry> 
               <entry key="gn:appTestReport"> 
-                <value>dl:itemId,gn:prdName,gn:prdVer,gn:appName,gn:appVer,gn:testStatus,gn:testDate,gn:testTime,gn:tester,gn:notes,fm:forum</value> 
+                <value>dl:itemId,gn:prdName,gn:prdVer,gn:appName,gn:appVer,gn:testStatus,gn:testDate,gn:testTime,gn:tester,gn:testMethod,gn:notes,fm:forum</value> 
               </entry> 
            </map> 
         </property> 

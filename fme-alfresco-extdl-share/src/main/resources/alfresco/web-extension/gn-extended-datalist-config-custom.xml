@@ -14,6 +14,7 @@
                <show id="gn:testDate" />
                <show id="gn:testTime" />
                <show id="gn:tester"/>
+               <show id="gn:testMethod"/>
                <show id="gn:notes" />
             </field-visibility>
             <create-form template="../data-lists/forms/dataitem.ftl" />
@@ -54,6 +55,11 @@
                <field id="gn:testDate" set="test"/>
                <field id="gn:testTime" set="test" help="" help-id=""/>
                <field id="gn:tester" set="test"/>
+               <field id="gn:testMethod" set="test">
+                  <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                  	<control-param name="style">width:350px</control-param>
+                  </control>
+               </field> 
             </appearance>
          </form>
          <form id="filter">
@@ -67,6 +73,7 @@
                <hide id="gn:testDate" />
                <hide id="gn:testTime" />
                <hide id="gn:tester"/>
+               <hide id="gn:testMethod"/>
                <hide id="gn:notes" />
              </field-visibility>
          </form>
@@ -81,6 +88,7 @@
                <show id="gn:testDate" />
                <show id="gn:testTime" />
                <show id="gn:tester"/>
+               <show id="gn:testMethod"/>
                <show id="gn:notes" />
                <show id="fm:discussable" force="true"/>
             </field-visibility>
@@ -102,6 +110,7 @@
                <show id="gn:testDate" />
                <show id="gn:testTime" />
                <show id="gn:tester"/>
+               <show id="gn:testMethod"/>
                <show id="gn:notes" />
                <show id="cm:creator" />
                <show id="cm:created" />
@@ -152,6 +161,11 @@
                <field id="gn:testDate" set="test"/>
                <field id="gn:testTime" set="test" help="" help-id=""/>
                <field id="gn:tester" set="test"/>
+               <field id="gn:testMethod" set="test">
+                  <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                  	<control-param name="style">width:250px</control-param>
+                  </control>
+               </field> 
                <field id="cm:creator" set="other">
                		<control template="/org/alfresco/components/form/controls/extended-person.ftl"/>
                </field>
