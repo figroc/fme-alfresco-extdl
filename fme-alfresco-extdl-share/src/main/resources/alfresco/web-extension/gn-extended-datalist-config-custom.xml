@@ -21,9 +21,9 @@
             <appearance>
                <set id="app" appearance="fieldset" label-id="form.appearance.set.label.app" label="App Info" 
                 template="../data-lists/forms/4-column-set.ftl"/>
-               <set id="notes" appearance=""/>	
                <set id="test" appearance="fieldset" label-id="form.appearance.set.label.test" label="Test Info" 
                 template="../data-lists/forms/4-column-set.ftl"/>	
+               <set id="notes" appearance=""/>	
                
                <field id="gn:prdName" set="app">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl" >
@@ -84,11 +84,11 @@
                <show id="gn:prdVer" />
                <show id="gn:appName" />
                <show id="gn:appVer" />
+               <show id="gn:testMethod"/>
                <show id="gn:testStatus" />
                <show id="gn:testDate" />
                <show id="gn:testTime" />
                <show id="gn:tester"/>
-               <show id="gn:testMethod"/>
                <show id="gn:notes" />
                <show id="fm:discussable" force="true"/>
             </field-visibility>
@@ -123,9 +123,9 @@
                <set id="title" appearance=""/>
                <set id="app" appearance="fieldset" label-id="form.appearance.set.label.app" label="App Info" 
                 template="../data-lists/forms/4-column-set.ftl"/>
-               <set id="notes" appearance=""/>
                <set id="test" appearance="fieldset" label-id="form.appearance.set.label.test" label="Test Info" 
                 template="../data-lists/forms/4-column-set.ftl"/>
+               <set id="notes" appearance=""/>
                <set id="other" appearance=""/>	
 
                <field id="dl:itemId" set="title" label-id="form.label.itemid">
