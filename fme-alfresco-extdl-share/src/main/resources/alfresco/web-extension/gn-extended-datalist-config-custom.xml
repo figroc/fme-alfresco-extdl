@@ -45,12 +45,6 @@
                   	<control-param name="style">width:100px</control-param>
                   </control>
                </field> 
-               <field id="gn:notes" set="notes">
-                  <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                  	<control-param name="rows">3</control-param>
-                  	<control-param name="style">width:250px</control-param>
-                  </control>
-               </field>
                <field id="gn:testStatus" set="test"/>
                <field id="gn:testDate" set="test"/>
                <field id="gn:testTime" set="test" help="" help-id=""/>
@@ -60,6 +54,12 @@
                   	<control-param name="style">width:350px</control-param>
                   </control>
                </field> 
+               <field id="gn:notes" set="notes">
+                  <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                  	<control-param name="rows">3</control-param>
+                  	<control-param name="style">width:250px</control-param>
+                  </control>
+               </field>
             </appearance>
          </form>
          <form id="filter">
@@ -151,18 +151,18 @@
                   	<control-param name="style">width:100px</control-param>
                   </control>
                </field> 
-               <field id="gn:notes" set="notes">
-                  <control template="/org/alfresco/components/form/controls/textarea.ftl">
-                  	<control-param name="rows">3</control-param>
-                  	<control-param name="style">width:250px</control-param>
-                  </control>
-               </field> 
                <field id="gn:testStatus" set="test"/>
                <field id="gn:testDate" set="test"/>
                <field id="gn:testTime" set="test" help="" help-id=""/>
                <field id="gn:tester" set="test"/>
                <field id="gn:testMethod" set="test">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
+                  	<control-param name="style">width:250px</control-param>
+                  </control>
+               </field> 
+               <field id="gn:notes" set="notes">
+                  <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                  	<control-param name="rows">3</control-param>
                   	<control-param name="style">width:250px</control-param>
                   </control>
                </field> 
