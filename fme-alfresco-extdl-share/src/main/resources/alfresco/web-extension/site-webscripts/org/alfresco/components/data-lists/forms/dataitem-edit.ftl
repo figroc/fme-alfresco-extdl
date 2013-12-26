@@ -21,10 +21,10 @@
         <div class="yui-g">
         <#list form.structure as item>
             <#if item_index == 0>
-               <div class="yui-u first" style="width:65%;text-align:left">
+               <div class="yui-u first" style="width:60%;text-align:left">
             <#elseif !item_has_next>
                </div>
-               <div class="yui-u" style="width:32%">
+               <div class="yui-u" style="width:38%">
             </#if>
             <#if item.kind == "set">
                <@formLib.renderSet set=item />

@@ -57,7 +57,7 @@
                <field id="gn:notes" set="notes">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
                   	<control-param name="rows">3</control-param>
-                  	<control-param name="style">width:250px</control-param>
+                  	<control-param name="style">width:700px</control-param>
                   </control>
                </field>
             </appearance>
@@ -157,13 +157,13 @@
                <field id="gn:tester" set="test"/>
                <field id="gn:testMethod" set="test">
                   <control template="/org/alfresco/components/form/controls/textfield.ftl">
-                  	<control-param name="style">width:250px</control-param>
+                  	<control-param name="style">width:350px</control-param>
                   </control>
                </field> 
                <field id="gn:notes" set="notes">
                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
                   	<control-param name="rows">3</control-param>
-                  	<control-param name="style">width:250px</control-param>
+                  	<control-param name="style">width:500px</control-param>
                   </control>
                </field> 
                <field id="cm:creator" set="other">
